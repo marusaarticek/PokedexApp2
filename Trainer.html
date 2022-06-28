@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark">
+
+    <div class="container-fluid">
+        <!-- Links -->
+        <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Pokemon.html">Pokemon</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Gym.html">Gym Battle</a>
+        </li>
+        </ul>
+    </div>
+    </nav>
+
+    <section class="bg-primary text-light p-5">
+        <div class="container">
+          <div class="d-md-flex justify-content-between align-items-center">
+            <h3 class="mb-3 mb-md-0">POKEDEX Trainers</h3>
+          </div>
+        </div>
+    </section>
+  
+    <section class="p-5" >
+        <div class="container">
+          <div class="row text-center g-4">
+            <div class="col-md">
+              <div class="card bg-dark text-light">
+                <div class="card-body text-center">
+                  <div class="h1 mb-3">
+                    <img src="img/ash.jpg" width="200" height="300">
+                  </div>
+                  <h3 class="card-title mb-3">Ash</h3>
+                  <p class="card-text">
+                    
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="card bg-dark text-light">
+                <div class="card-body text-center">
+                  <div class="h1 mb-3">
+                    <img src="img/misty.jpg" width="200" height="300">
+                  </div>
+                  <h3 class="card-title mb-3">Misty</h3>
+                  <p class="card-text">
+                    
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="card bg-dark text-light">
+                <div class="card-body text-center">
+                  <div class="h1 mb-3">
+                    <img src="img/Brock.jpg" width="200" height="300">
+                  </div>
+                  <h3 class="card-title mb-3">Brock</h3>
+                  <p class="card-text">
+                  
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section id="trainer">
+        <div class="container mt-3">
+            <h2 class="text-center">Table of All Trainers</h2>
+            <p class="text-center">Create a new Trainer and add them to the Pokedex!</p>            
+            <table class="table table-hover table-dark table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Trainer Name</th>
+                  <th>Rank</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody >
+                <tr v-for="trainer in trainers" @click="populateRow(trainer)">
+                    <td >
+                        {{trainer.id}}
+                    </td>
+                    <td>
+                        {{trainer.name}}
+                    </td>
+                    <td>
+                        {{trainer.rank}}
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" @click="deleteTrainer(trainer.id)"> Delete</button>
+                    </td>
+                </tr>
+            </table> 
+        </div>
+
+        <div class="container">
+            <div class="col-md">
+                <div class="card bg-dark text-light">
+                  <div class="card-body text-center">
+                    <div class="row">
+                        <div class="col">
+                          <p> ID: <input placeholder="Enter trainer id" v-model="trainer.id" type="text" class="form-control" ></p>
+                        </div>
+                        <div class="col">
+                            <p> Name:<input v-model="trainer.name" type="text" class="form-control" placeholder="Enter trainer name"> </p>
+                        </div>
+                        <div class="col">
+                          <p> Rank:<input v-model="trainer.rank" type="text" class="form-control" placeholder="Enter trainer rank"> </p>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-danger" v-on:click="updateTrainer"> Update</button>
+            &nbsp &nbsp
+            <button class="btn btn-danger" v-on:click="addtrainer"> Add trainer</button>
+        </div>
+        <br>
+    </section>
+
+  <script src="js/Trainer.js"></script>
+</body>
+</html>
